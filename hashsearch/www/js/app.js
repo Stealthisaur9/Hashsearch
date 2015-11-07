@@ -1,8 +1,8 @@
-angular.module('imageShare', ['ionic','happyhour.controllers','happyhour.services','happyhour.directives'])
+var app = angular.module('mainCtrl', ['ionic'])
 
-.run(function($ionicPlatform,$state) {
+app.run(function($ionicPlatform,$state) {
   $ionicPlatform.ready(function() {
-    
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
@@ -11,14 +11,12 @@ angular.module('imageShare', ['ionic','happyhour.controllers','happyhour.service
     }
     $state.go('home');
   });
-}).config(['$stateProvider',function($stateProvider){
+})
+
+app.config(['$stateProvider',function($stateProvider){
         $stateProvider.state('home',{
             url:'/home',
-            controller:'HomeController',
+            controller:'mainCtrl',
             templateUrl:'views/home.html'
-        }).state('chat',{
-            url:'/chat',
-            controller:'ChatController',
-            templateUrl:'views/chat.html'
         });
 }]);
